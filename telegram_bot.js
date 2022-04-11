@@ -20,16 +20,19 @@ bot.on('message', (msg) => {
             callback_data: "teste azul",},],
         [{
             text: "Deletar um usuário",
-            callback_data: "click2",},],
+            callback_data: "oi",},],
         [{
-            text: "Quantidade total de usuários",
+            text: "Atualizar dados de um usuário",
             callback_data: "click3",},],
         [{
             text: "Quantidade de usuários online",
             callback_data: "click4",},],
         [{
+            text: "Quantidade de usuários online",
+            callback_data: "click5",},],
+        [{
             text: "Acessar diretamente o painel",
-            callback_data: "click5",
+            callback_data: "click6",
             url: `https://stackoverflow.com/questions/61467722/difference-between-npm-update-and-remove-package-lock-json-plus-npm-install`,},],
       ],
   
@@ -38,8 +41,22 @@ bot.on('message', (msg) => {
   });
 });
 
+
 bot.on('callback_query', (carro) => {
   const msg = carro.message;
-  bot.answerCallbackQuery(carro.id)
-      .then(() => bot.sendMessage(msg.chat.id, "Deu certo seu commit!"));
+  console.log(carro.data);
+  if(carro.data == 'click3') {
+    bot.answerCallbackQuery(carro.id)
+      .then(() => bot.sendMessage(msg.chat.id, "Deu certo!"));
+  } else {
+    bot.answerCallbackQuery(carro.id)
+    .then(() => bot.sendMessage(msg.chat.id, "Deu certo seu commit!"));
+  }
 });
+
+// bot.on('callback_query', (carro) => {
+//   const msg = carro.message;
+//   console.log(carro.data);
+//   bot.answerCallbackQuery(carro.id)
+//       .then(() => bot.sendMessage(msg.chat.id, "Deu certo seu commit!"));
+// });
